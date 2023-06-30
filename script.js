@@ -63,6 +63,8 @@ orderPizza(mainIngredient, ...otherIngredients) {
 // }
 
 
+// ---------------------------------------------------------------------------------------------------------------------------------------------
+//Object Literals
 // You can now create an object and use it as method inside some other object, by just declaring its name now in ES6!
 // for eg,
 
@@ -96,6 +98,30 @@ orderPizza(mainIngredient, ...otherIngredients) {
 //    }
 // }
 // console.log(object2,object3);
+// ---------------------------------------------------------------------------------------------------------------------------------------------
+// Optional Chaining:
+if(restaurant.openingHours && restaurant.openingHours.mon){
+  console.log(restaurant.openingHours.mon.open);
+}
+
+// With Optional Chaining:
+console.log(restaurant.openingHours.mon?.open); //Read it as, if mon exists then .open property will be logged otherwise not
+
+const weekdays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+
+for(const day of weekdays){
+
+  const open = restaurant.openingHours[day]?.open ?? 'no Time'; // Nullish coelescing and Optional chaining were designed together to work with each other
+  // console.log(open);
+  console.log(`On ${day}, it will open at ${open}`);
+  // console.log(day);
+
+}
+
+//Methods
+console.log(restaurant.order?.(1,3) ?? 'You cannot order because no such Method exists');
+console.log(restaurant.orderwalafunction?.(1,3) ?? 'You cannot order because no such Method exists');
+
 // ---------------------------------------------------------------------------------------------------------------------------------------------
 // restaurant.orderDelievery({
 //   time: '22:30',
